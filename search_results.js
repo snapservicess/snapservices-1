@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             employeeDiv.innerHTML = `
                 <h3>${employee.name}</h3>
                 <p>${employee.email}</p>
-                <h3>${employee.services}</h3>
+                <h3>${employee.service}</h3>
                 <p>${employee.phone}</p>
-                 <button onclick="bookService('${employee.id}')">Book Service</button>
+                <button onclick="bookService('${employee.id}')">Book Service</button>
             `;
             resultsContainer.appendChild(employeeDiv);
         });
@@ -33,23 +33,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-async function bookService(employeeId) {
-    try {
-        const response = await fetch('book_service.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ employeeId })
-        });
+// async function bookService(employeeId) {
+//     try {
+//         const response = await fetch('book_service.php', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({ employeeId })
+//         });
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
 
-        const result = await response.json();
-        alert(result.message);
-    } catch (error) {
-        console.error('There was a problem with the booking operation:', error);
-    }
-}
+//         const result = await response.json();
+//         alert(result.message);
+//     } catch (error) {
+//         console.error('There was a problem with the booking operation:', error);
+//     }
+// }

@@ -1,31 +1,36 @@
 <?php
 header('Content-Type: application/json');
-// fetch_employees.php
+
+// Database connection
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = ""; // Default password for XAMPP
 $dbname = "snapservices";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    echo json_encode(['message' => 'Connection failed: ' . $conn->connect_error]);
+    exit();
 }
 
-$services = $_GET['services'];
-$sql = "SELECT * FROM employees WHERE services='$services'";
-$result = $conn->query($sql);
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $services = $_GET['services'];
 
-$employees = array();
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+    // Fetch employees based on the service
+    $sql = "SELECT id, name, email, phone, service FROM employees WHERE service = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $services);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $employees = [];
+    while ($row = $result->fetch_assoc()) {
         $employees[] = $row;
     }
+
+    echo json_encode($employees);
+
+    $stmt->close();
+    $conn->close();
 }
-
-echo json_encode($employees);
-
-$conn->close();
 ?>
