@@ -5,90 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collaborate</title>
     <link rel="stylesheet" href="collaborate.css">
-    <script src="collaborate.js"></script>
-    <style>
-        input, select {
-            margin-bottom: 15px;
-            padding: 10px;
-            width: 100%;
-        }
-        #otpField {
-            display: none;
-        }
-        body
-        {
-            background-position: center;
-
-        }
-    </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- Image Section -->
         <div class="image-container"></div>
         <style>
             input, select {
                 margin-bottom: 15px;
-                padding: 5px;
-                width: 91%;
-            
+                padding: 10px;
+                width: 93%;
             }
-            body
-            {
+            body {
                 background-position: center;
-    
             }
         </style>
 
-        <!-- Form Section -->
         <div class="form-container">
             <header>
                 <h1>Employee Collaboration</h1>
             </header>
 
-            <!-- Form to Submit Details -->
-            <!-- On first submit, it will go to generate.php to send OTP -->
-            <form  method="POST" id="registrationForm" action="collaborate.php">
-                <!-- Name and Email Fields -->
+            <form id="registrationForm" method="post" action="collaborate.php">
                 <label for="name"><b>Name</b></label><br>
                 <input type="text" name="name" id="name" placeholder="Enter your name" required /> <br/>
 
                 <label for="email"><b>Email</b></label><br>
                 <input type="email" name="email" id="email" placeholder="Enter your email id" required /><br/>
 
-                <!-- Phone Number Field -->
                 <label for="phone"><b>Phone Number</b></label>
-                <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" required   /> <br/>
+                <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" required /> <br/>
 
                 <label for="experience"><b>Experience</b></label>
                 <input type="text" name="experience" id="experience" placeholder="Enter your experience in work" required /> <br/>
 
-                <!-- Service Selection -->
                 <label for="service"><b>What service are you going to provide?</b></label><br>
                 <select name="service" id="service" required>
                     <option value="plumber">Plumber</option>
                     <option value="electrician">Electrician</option>
                     <option value="maid">Maid</option>
-                </select> <br>
+                </select><br/>
 
-                <!-- Submit Button -->
-                <button type="submit" onsubmit="handleSubmit(event)">Submit</button>
-                <button type="button" value="reset">Reset</button>
+                <button type="submit">Submit</button>
             </form>
-
-            <!-- OTP Field (Initially Hidden, shown after OTP is sent)
-            <div id="otpField">
-                <form action="collaborate.php" method="POST">
-                    <input type="number" name="otp" placeholder="Enter your OTP" required /> <br><br>
-                    <input type="submit" value="Verify OTP">
-                </form>
-            </div> -->
-
-            <div class="note">
-                <strong>NOTE:</strong>
-                <p>If you have problems with collaborating, please contact our team using the below link  :</p>
-                <br><a href="contact.html" class="contact-link">Contact our team</a>
-            </div>
         </div>
     </div>
 </body>

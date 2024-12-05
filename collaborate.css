@@ -77,7 +77,7 @@ body {
         margin: 10px 0;
         border: 1px solid #ccc;
         border-color: #b0c4de;
-        border-radius: 10px;
+        border-radius: 3px;
     }
 
     input::placeholder{
